@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { List, Checkbox, Button } from 'antd';
-import { TodoContext } from './TodoProvider';
+
+// context
+import { useTodoContext } from '../contexts/TodoContext';
 
 function TodoList() {
-  const { todos, completeTodo, deleteTodo } = useContext(TodoContext);
+  const { todos, completeTodo, deleteTodo } = useTodoContext();
 
   return (
     <List

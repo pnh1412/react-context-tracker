@@ -1,1 +1,17 @@
-  
+  .heading {
+    text-align: center;
+  }
+
+  .container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 768px;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .justify-end {
+    justify-content: end;
+  }

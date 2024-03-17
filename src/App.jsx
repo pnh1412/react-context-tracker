@@ -1,26 +1,43 @@
 import React from 'react';
-import { Layout } from 'antd';
-import TodoProvider from './components/TodoProvider';
+import { Tabs } from 'antd';
+
+// components
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
-
-const { Header, Content } = Layout;
+import TodoCompleted from './components/TodoCompleted';
+import User from './components/User';
 
 function App() {
+  const onChange = (key) => {
+    // console.log(key);
+  };
+
+  const items = [
+    {
+      key: '1',
+      label: 'All',
+      children: (
+        <>
+          <TodoForm />
+          <TodoList />
+        </>
+      ),
+    },
+    {
+      key: '2',
+      label: 'Completed',
+      children: <TodoCompleted />
+    },
+  ];
+
   return (
-    <TodoProvider>
-      <Layout>
-        <Header>
-          <h1 style={{ color: 'white' }}>Todo App</h1>
-        </Header>
-        <Content style={{ padding: '0 50px' }}>
-          <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-            <TodoForm />
-            <TodoList />
-          </div>
-        </Content>
-      </Layout>
-    </TodoProvider>
+    <>
+      <h1 className='heading'>Todo App</h1>
+      <div className='container'>
+        <User />
+        <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+      </div>
+    </>
   );
 }
 
