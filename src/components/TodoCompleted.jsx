@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Typography, Input, Button } from 'antd';
+import { Flex, Typography, Input, Button, List } from 'antd';
 import { MinusOutlined } from '@ant-design/icons';
 import { useTodoContext } from '../contexts/TodoContext';
 
@@ -17,20 +17,27 @@ function TodoCompleted() {
         <Button>Search</Button>
       </Flex>
       <br />
-      <Flex vertical="column">
-        {completedTodos.map(todo => (
-          <Flex key={todo.id} justify="space-between" align="center" style={{ marginTop: 5 }}>
-            <Text>{todo.text}</Text>
-            <Button 
-              danger 
-              shape="circle" 
-              size='small' 
-              icon={<MinusOutlined />} 
-              onClick={() => handleUndoCompletedTodo(todo.id)}  
-            />
-          </Flex>
-        ))}
-      </Flex>
+      <List
+        dataSource={completedTodos}
+        renderItem={(todo) => (
+          <List.Item
+            actions={[
+              <Button 
+                danger 
+                shape="circle" 
+                size='small' 
+                icon={<MinusOutlined />} 
+                onClick={() => handleUndoCompletedTodo(todo.id)}  
+              />
+            ]}
+          >
+            <Flex key={todo.id} justify="space-between" align="center" style={{ marginTop: 5 }}>
+              <Text>{todo.text}</Text>
+             
+            </Flex>
+          </List.Item>
+        )}
+      />
     </>
   )
 }

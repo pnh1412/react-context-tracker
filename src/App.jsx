@@ -5,7 +5,7 @@ import { Tabs } from 'antd';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 import TodoCompleted from './components/TodoCompleted';
-import User from './components/User';
+// import User from './components/User';
 
 function App() {
   const onChange = (key) => {
@@ -34,7 +34,7 @@ function App() {
     <>
       <h1 className='heading'>Todo App</h1>
       <div className='container'>
-        <User />
+        {/* <User /> */}
         <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
       </div>
     </>
